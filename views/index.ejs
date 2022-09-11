@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/styles.css">
+  
+    <title>Document</title>
+</head>
+<body>
+    <form action="/" method="post">
+        
+            <div class="container">
+                <header><i class='bx bx-arrow-back' onclick="MainMenu()" id="arrow"></i>Weather App</header>
+                <section class="input-part"> 
+                <p class="info-text">Please enter a city name</p>
+                <input type="text" name="cityName" id="cityName"   placeholder="Enter City Name" autocomplete="off-"><br>
+                <button id="buttonSubmit" >Submit City</button>
+                </section>  
+    
+         </form>
+        <% if(temp){ %>
+                <section class="weather-part" id="weather-part">
+                     
+                    <img src="http://openweathermap.org/img/wn/<%= temp.weather[0].icon %>@2x.png" alt="Weather icon"/>
+                    <div class="temp">
+                        <span class="numb" id="temperature"><%= temp.main.temp %></span>
+                        <span class="deg">°</span>C
+                    </div> 
+                    <div class="weather" id="weather"> <%= temp.weather[0].description %></div>
+                    <div class="location">
+                        <i class='bx bx-map'></i>
+                        <span class="cityNameP" id="cityNameP"><%= temp.name %></span>
+                    </div>
+                    <div class="double-table">
+                        <div class="column feels">
+                            <i class='bx bxs-thermometer' ></i>
+                            <span class="fnumb" id="fnumb"><%= temp.main.feels_like %></span>
+                            <span class="deg">°</span>C
+                            <p> Feels Like</p>
+                        </div>
+                        <div class="column humidity">
+                            <i class='bx bxs-droplet-half' ></i>
+                            <span class="numb" id="hnumb"><%= temp.main.humidity %> </span>
+                            <p>humidity</p>           
+                        </div>
+                    </div>
+                    </div>
+              
+                </section>
+      </div>
+      <script>
+        let targetDiv = document.getElementById("weather-part");
+        function MainMenu()
+        {
+            targetDiv.style.display = "none";
+        }
+      </script>
+                   <% } %>
+</body>
+</html>
